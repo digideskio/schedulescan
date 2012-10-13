@@ -42,11 +42,10 @@ exports.retrieveData = function(term, classif, destination) {
 				//fs.writeFile("tidydata.txt", html, function(err) {});
 				var $ = cheerio.load(html);
 				var department = "";
-				var k = 0;
+				var k = -1;
 				var c = 0;
 				$("tr").each(function(i, row) {
 					var cells = $(row).find("td");
-					var n = cells.length;
 					if ((cells.length == 1) || (c > 0)) {
 						if (c == 0) {
 							c = 4;
@@ -64,7 +63,7 @@ exports.retrieveData = function(term, classif, destination) {
 							switch(j) {
 								case 0:
 									k += 1;
-									rows[k] = {dept: department};
+									rows.push({dept: department, note: ""});
 									break;
 								case 1:
 									rows[k].controlno = cell_text;
@@ -102,9 +101,6 @@ exports.retrieveData = function(term, classif, destination) {
 						});
 					}
 				});
-				for(var i = 0; i < 10; i++) {
-					console.log(rows[i].time);
-				}
 				destination(rows);
 			});
 		});
