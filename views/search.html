@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-	<body>
+	<h2>Enter your query for Berkeley Classes API </h2><br>
+	<body background = "wallpaper.jpg">
 
 		<form name = "query" action="" method = "get">
-		<select name = "dept">
+		<label for="deptdropdown"> Department </label>
+		<select name = "dept" id = "deptdropdown">
 		<option value = "Aerospace Studies">Aerospace Studies</option>
 		<option value = "African American Studies">African American Studies</option>
 		<option value = "Afrikaans">Afrikaans</option>
@@ -21,9 +23,11 @@
 		<option value = "Astronomy">Astronomy</option>
 		<option value = "Bengali">Bengali</option>
 		</select>
+		<img src = "cal_logo.jpg" align = "left" height = "150" width = "150" hspace = "10" vspace = "10">
+		<br><br>
 
-		Course Number: <input type = "text" name = "courseno"><br>
-		Course Control Number (CCN): <input type = "text" name = "controlno"><br>
+		Course Number: <input type = "text" name = "courseno"><br><br>
+		Course Control Number (CCN): <input type = "text" name = "controlno"><br><br>
 		<input type = "submit" value = "Search">
 		</form>
 		<script>
@@ -32,13 +36,13 @@
 			if(typeof(formdata.dept.value) != null && formdata.dept.value != undefined) {
 				newurl+='dept='+formdata.dept.value;
 			}
-			if(typeof(formdata.courseno.value) != null && formdata.courseno.value != undefined) {
+			if(typeof(formdata.courseno.value) != '' && formdata.courseno.value != undefined) {
 				if(newurl != '') {
 					newurl += '&';
 				}
 				newurl+='courseno='+formdata.courseno.value;
 			}
-			if(typeof(formdata.controlno.value) != null && formdata.controlno.value != undefined) {
+			if(typeof(formdata.controlno.value) != '' && formdata.controlno.value != undefined) {
 				if(newurl != '') {
 					newurl += '&';
 				}
