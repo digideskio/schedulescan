@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<form name = "query" action="" method = "get">
+		<select name = "dept">
+		<option value = "Aerospace Studies">Aerospace Studies</option>
+		<option value = "African American Studies">African American Studies</option>
+		<option value = "Afrikaans">Afrikaans</option>
+		<option value = "Agricultural and Environmental Chemistry">Agricultural and Environmental Chemistry</option>
+		<option value = "Agricultural and Resource Economics and Policy">Agricultural and Resource Economics and Policy</option>
+		<option value = "Altaic">Altaic</option>
+		<option value = "American Studies">American Studies</option>
+		<option value = "Ancient History and Mediterranean Archaeology">Ancient History and Mediterranean Archaeology</option>
+		<option value = "Anthropology">Anthropology</option>
+		<option value = "Applied Science and Technology">Applied Science and Technology</option>
+		<option value = "Arabic">Arabic</option>
+		<option value = "Architecture">Architecture</option>
+		<option value = "Asian American Studies Program">Asian American Studies Program</option>
+		<option value = "Asian Studies">Asian Studies</option>
+		<option value = "Astronomy">Astronomy</option>
+		<option value = "Bengali">Bengali</option>
+		</select>
+
+		Course Number: <input type = "text" name = "courseno"><br>
+		Course Control Number (CCN): <input type = "text" name = "controlno"><br>
+		<input type = "submit" value = "Search">
+		</form>
+		<script>
+			var formdata = document.getElementById('query');
+			var newurl = ''
+			if(typeof(formdata.dept.value) != null && formdata.dept.value != undefined) {
+				newurl+='dept='+formdata.dept.value;
+			}
+			if(typeof(formdata.courseno.value) != null && formdata.courseno.value != undefined) {
+				if(newurl != '') {
+					newurl += '&';
+				}
+				newurl+='courseno='+formdata.courseno.value;
+			}
+			if(typeof(formdata.controlno.value) != null && formdata.controlno.value != undefined) {
+				if(newurl != '') {
+					newurl += '&';
+				}
+				newurl+='controlno='+formdata.controlno.value;
+			}
+			url = '../'+newurl;
+			window.location = url;
+		</script>
+	</body>
+</html>
+
+
