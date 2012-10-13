@@ -108,47 +108,42 @@ exports.addorupdate = function(datarows) {
 						}
 						break;
 					case 3:
-						if(row[j] != datarow.sectionno) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
 					case 4:
-						if(row[j] != datarow.controlno) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
 					case 5:
-						if(row[j] != datarow.time) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;					
 					case 6:
-						if(row[j] != datarow.room) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
 					case 7:
-						if(row[j] != datarow.units) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
 					case 8:
-						if(row[j] != datarow.instructor) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
 					case 9:
-						if(row[j] != datarow.examgroup) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
 					case 10:
-						if(row[j] != datarow.restrictions) {
-							olddata = false;
-						}
-						break;
-					case 11:
-						if(row[j] != datarow.note) {
+						if(row[j] != datarow.dept) {
 							olddata = false;
 						}
 						break;
