@@ -102,8 +102,7 @@ exports.retrieveData = function(term, classif, destination) {
 						});
 					}
 				});
-				console.log(rows[k-17]);
-				console.log("k is " + k);
+				destination(rows);
 			});
 		});
 	});

@@ -32,8 +32,11 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/go', function(req, res) {
+	var something = function(arr) {
+		// Do something with the array of courses
+	}
 	//retrieve.retrieveData("FL", "L");
-	retrieve.retrieveData("FL", "U");
+	retrieve.retrieveData("FL", "U", something);
 	// retrieve.retrieveData("SP", "L");
 	// retrieve.retrieveData("SP", "U");
 	// retrieve.retrieveData("SU", "L");
