@@ -29,7 +29,7 @@ function mysql_real_escape_string (str) {
 exports.addtodb = function(datarows) {
 	var connection = mysql.createConnection({
 		  host     : 'localhost',
-		  user     : 'hackathon',
+		  user     : 'root',
 		  password : 'password',
 		  database : 'bclass',
 	});
