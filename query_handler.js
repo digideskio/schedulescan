@@ -42,73 +42,76 @@ exports.querydb = function(inputrow, callback) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' title = "'+ mysql_real_escape_string(inputrow.title) +'"';
+		values += ' title = "'+ mysql_real_escape_string(inputrow.title) + '"';
 	}
-	if (typeof(inputrow.dept) != null && inputrow.dept != undefined) {
+	if (typeof(inputrow.courseno) != null && inputrow.courseno != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' courseno = "'+ mysql_real_escape_string(inputrow.dept) +'"';
+		values += ' courseno = "'+ mysql_real_escape_string(inputrow.courseno) + '"';
 	}
 	if (typeof(inputrow.sectionno) != null && inputrow.sectionno != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' sectionno = "'+ mysql_real_escape_string(inputrow.sectionno) +'"';
+		values += ' sectionno = "'+ mysql_real_escape_string(inputrow.sectionno) + '"';
 	}
 	if (typeof(inputrow.controlno) != null && inputrow.controlno != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' controlno = "'+ mysql_real_escape_string(inputrow.controlno)+'"';
+		values += ' controlno = "'+ mysql_real_escape_string(inputrow.controlno) + '"';
 	}
 	if (typeof(inputrow.time) != null && inputrow.time != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' time = "'+ mysql_real_escape_string(inputrow.time) +'"';
+		values += ' time = "'+ mysql_real_escape_string(inputrow.time) + '"';
 	}
 	if (typeof(inputrow.room) != null && inputrow.room != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' room = "'+ mysql_real_escape_string(inputrow.room) +'"';
+		values += ' room = "'+ mysql_real_escape_string(inputrow.room) + '"';
 	}
 	if (typeof(inputrow.units) != null && inputrow.units != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' units = "'+ mysql_real_escape_string(inputrow.units) +'"';
+		values += ' units = "'+ mysql_real_escape_string(inputrow.units) + '"';
 	}
 	if (typeof(inputrow.instructor) != null && inputrow.instructor != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' instructor = "'+ mysql_real_escape_string(inputrow.instructor) +'"';
+		values += ' instructor = "'+ mysql_real_escape_string(inputrow.instructor) + '"';
 	}
 	if (typeof(inputrow.examgroup) != null && inputrow.examgroup != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' examgroup = "'+ mysql_real_escape_string(inputrow.examgroup) +'"';
+		values += ' examgroup = "'+ mysql_real_escape_string(inputrow.examgroup) + '"';
 	}
 	if (typeof(inputrow.restrictions) != null && inputrow.restrictions != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' restrictions = "'+ mysql_real_escape_string(inputrow.restrictions) +'"';
+		values += ' restrictions = "'+ mysql_real_escape_string(inputrow.restrictions) + '"';
 	}
 	if (typeof(inputrow.note) != null && inputrow.note != undefined) {
 		if(values != '') {
 			values += ' AND';
 		}
-		values += ' note = "'+ mysql_real_escape_string(inputrow.note) +'"';
+		values += ' note = "' + mysql_real_escape_string(inputrow.note) + '"';
 	}
 	values+=';';
 	
 	connection.query('SELECT * FROM courses WHERE'+ values, function(err, rows, fields) {
-		if (err) throw err;
-        callback(rows);
+		if (err) { 
+        callback("There was a probem with your input.");
+        } else {
+            callback(rows);
+        }
 	});
 	
 	connection.end();

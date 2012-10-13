@@ -30,43 +30,30 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/search', function(req, res) {
-    var query = {};
-    if (req.query.title != undefined) {
-        query.title = req.query.title;
+    // Speed up calls to hasOwnProperty
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+    function is_empty(obj) {
+
+        // Assume if it has a length property with a non-zero value
+        // that that property is correct.
+        if (obj.length && obj.length > 0)    return false;
+        if (obj.length && obj.length === 0)  return true;
+
+        for (var key in obj) {
+            if (hasOwnProperty.call(obj, key))    return false;
+        }
+
+        return true;
     }
-    if (req.query.courseno != undefined) {
-        query.courseno = req.query.courseno;
+
+    if (is_empty(req.query)) {
+        res.render('search');
+    } else {
+        query_handler.querydb(req.query, function(data) {
+            res.send(data);
+        });
     }
-    if (req.query.sectionno != undefined) {
-        query.sectionno = req.query.sectionno;
-    }
-    if (req.query.controlno != undefined) {
-        query.controlno = req.query.controlno;
-    }
-    if (req.query.time != undefined) {
-        query.time = req.query.time;
-    }
-    if (req.query.room != undefined) {
-        query.room = req.query.room;
-    }
-    if (req.query.units != undefined) {
-        query.units = req.query.units;
-    }
-    if (req.query.instructor != undefined) {
-        query.instructor = req.query.instructor;
-    }
-    if (req.query.examgroup != undefined) {
-        query.examgroup = req.query.examgroup;
-    }
-    if (req.query.restrictions != undefined) {
-        query.restrictions = req.query.restrictions;
-    }
-    if (req.query.note != undefined) {
-        query.note = req.query.note;
-    }
-    query_handler.querydb(query, function(data) {
-        res.send(data);
-    });
 });
 
 app.get('/:id', function(req, res) {
