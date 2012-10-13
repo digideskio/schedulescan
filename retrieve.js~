@@ -103,7 +103,7 @@ exports.retrieveData = function(term, classif, destination) {
 					}
 				});
 				for(var i = 0; i < 10; i++) {
-					console.log(rows[i].time);
+					console.log(rows[i]);
 				}
 				destination(rows);
 			});

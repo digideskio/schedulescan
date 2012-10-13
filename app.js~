@@ -34,7 +34,8 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/go', function(req, res) {
 	var something = function(arr) {
-		// Do something with the array of courses
+		console.log(arr[300]);
+		database.addtodb(arr);
 	}
 	//retrieve.retrieveData("FL", "L");
 	retrieve.retrieveData("FL", "U", something);

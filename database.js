@@ -2,22 +2,32 @@
 exports.addtodb = function(datarows) {
 	var mysql = require('mysql');	
 	var connection = mysql.createConnection({
-		  host     : 'localhost:3306',
+		  host     : '127.0.0.1',
 		  user     : 'root',
 		  password : 'password',
 		  database : 'bclass',
 	});
 	//assume that the table is set up beforehand
 	connection.connect();
-	for(i in datarows) {
+	connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+	  if (err) throw err;
+
+	  console.log('The solution is: ', rows[0].solution);
+	});
+	var datarow;
+	var values;
+	console.log('arr length is ', datarows.length);
+	for(var i = 0; i < datarows.length; i++) {
 		console.log('On row ', i);
-		var values = "('"+datarow.dept+"', '"+datarow.title+"', '"+datarow.courseno+"', '"+datarow.sectionno+"', '"+datarow.controlno+"', '"+datarow.time+"', '"+datarow.room+"', '"+datarow.units+"', '"+datarow.instructor+"', '"+datarow.examgroup+"', '"+datarow.restrictions+"', '"+datarow.note+"')";
+		datarow = datarows[i];
+		values = "('"+datarow.dept+"', '"+datarow.title+"', '"+datarow.courseno+"', '"+datarow.sectionno+"', '"+datarow.controlno+"', '"+datarow.time+"', '"+datarow.room+"', '"+datarow.units+"', '"+datarow.instructor+"', '"+datarow.examgroup+"', '"+datarow.restrictions+"', '"+datarow.note+"')";
 		connection.query('INSERT INTO courses (dept, title, courseno, sectionno, controlno, time, room, units, instructor, examgroup, restrictions, note) VALUES ' + values, function(err, rows, fields) {
 		  if (err) throw err;
 		  console.log('Inserted course no: ', datarow.controlno);
 		});
 	}
 	connection.end();
+	console.log('connection closed');
 };
 
 //querying
